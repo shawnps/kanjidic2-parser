@@ -9,7 +9,7 @@ import os
 
 KANJIDIC2_DATAFILE = 'kanjidic2.xml'
 
-class KanjiToday():
+class KanjiDic():
     def __init__(self):
         self.elements = []
         self.definitions = defaultdict(list)
@@ -78,6 +78,6 @@ class Kanji():
         self.get_nanori()
 
 if __name__ == '__main__':
-    kanjidic = KanjiToday()
+    kanjidic = KanjiDic()
     for k in kanjidic.kanji:
         print k.literal, k.meanings, '\n'
