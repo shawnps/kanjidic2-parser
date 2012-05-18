@@ -9,6 +9,7 @@ import os
 
 KANJIDIC2_DATAFILE = 'kanjidic2.xml'
 
+
 class KanjiDic():
     def __init__(self):
         self.elements = []
@@ -31,6 +32,7 @@ class KanjiDic():
         self._open_kanjidic2_file_get_elements()
         self.get_kanji()
 
+
 class Kanji():
     def __init__(self, element):
         self.element = element
@@ -47,8 +49,10 @@ class Kanji():
         self.literal = self.element.getElementsByTagName("literal")[0].childNodes[0].data
 
     def get_grade(self):
-        try: self.grade = self.element.getElementsByTagName("grade")[0].childNodes[0].data
-        except: pass
+        try:
+            self.grade = self.element.getElementsByTagName("grade")[0].childNodes[0].data
+        except:
+            pass
 
     def get_stroke_count(self):
         self.stroke_count = self.element.getElementsByTagName("stroke_count")[0].childNodes[0].data
@@ -62,12 +66,16 @@ class Kanji():
 
     def get_meanings(self):
         # meanings that have attributes are in non-English languages
-        try: self.meanings = [meaning.childNodes[0].data for meaning in self.element.getElementsByTagName("meaning") if not meaning.hasAttributes()]
-        except: pass
+        try:
+            self.meanings = [meaning.childNodes[0].data for meaning in self.element.getElementsByTagName("meaning") if not meaning.hasAttributes()]
+        except:
+            pass
 
     def get_nanori(self):
-        try: self.nanori = [nanori.childNodes[0].data.encode('utf-8') for nanori in self.element.getElementsByTagName("nanori")]
-        except: pass
+        try:
+            self.nanori = [nanori.childNodes[0].data.encode('utf-8') for nanori in self.element.getElementsByTagName("nanori")]
+        except:
+            pass
 
     def setup(self):
         self.get_literal()
